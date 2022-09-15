@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   btn: {
-    width: 183,
+    paddingHorizontal: 20,
     height: 40,
     backgroundColor: '#0074FF',
     justifyContent: 'center',

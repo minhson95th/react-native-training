@@ -85,8 +85,9 @@ export default class NapTienDienThoaiScreen extends Component {
   };
 
   onPressContinue = () => {
-    this.props.navigation.navigate("Xác nhận giao dịch", {tabIndex: this.state.selectedIndex})
-
+    this.props.navigation.navigate('Xác nhận giao dịch', {
+      tabIndex: this.state.selectedIndex,
+    });
   };
 
   updateData = data => {
@@ -113,6 +114,7 @@ export default class NapTienDienThoaiScreen extends Component {
           <View style={styles.container}>
             <View style={styles.segmentContainer}>
               <SegmentedControl
+                backgroundColor="rgba(0, 0, 0, 0.8)"
                 fontStyle={{color: 'rgba(255, 255, 255, 1)', fontSize: 14}}
                 activeFontStyle={{color: 'rgba(0, 0, 0, 1)', fontSize: 14}}
                 style={styles.segment}
@@ -124,9 +126,12 @@ export default class NapTienDienThoaiScreen extends Component {
               />
             </View>
             <View style={{flexGrow: 1}}>
-              <RenderItemConditionally index={this.state.selectedIndex} navigation = {this.props.navigation} />
+              <RenderItemConditionally
+                index={this.state.selectedIndex}
+                navigation={this.props.navigation}
+              />
             </View>
-            <View style={{marginHorizontal: 20}}>
+            <View style={{marginHorizontal: 20, marginVertical: 20,}}>
               <TouchableOpacity
                 style={{
                   backgroundColor: '#0075FF',
@@ -236,7 +241,7 @@ function RenderItemConditionally(props) {
   } else if (props.index == 1) {
     return <TraSauComponent />;
   } else {
-    return <DataComponent navigation={props.navigation}/>;
+    return <DataComponent navigation={props.navigation} />;
   }
 }
 

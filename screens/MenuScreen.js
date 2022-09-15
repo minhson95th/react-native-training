@@ -13,14 +13,13 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import NapTienDienThoaiScreen from '../screens/NapTienDienThoaiScreen';
-import XacNhanGiaoDichScreen from "../screens/XacNhanGiaoDichScreen";
-import LichSuGiaoDichScreen from "../screens/LichSuGiaoDichScreen";
-import ChiTietGiaoDichSreen from "../screens/ChiTietGiaoDichSreen";
-import ThanhToanScreen from "../screens/ThanhToanScreen";
+import XacNhanGiaoDichScreen from '../screens/XacNhanGiaoDichScreen';
+import LichSuGiaoDichScreen from '../screens/LichSuGiaoDichScreen';
+import ChiTietGiaoDichSreen from '../screens/ChiTietGiaoDichSreen';
+import ThanhToanScreen from '../screens/ThanhToanScreen';
 
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
-import { useNavigation } from '@react-navigation/native'
-
+import {useNavigation} from '@react-navigation/native';
 
 const {width, fontScale} = Dimensions.get('window');
 export const dp = (px: number) => {
@@ -77,7 +76,8 @@ const DATA = [
 ];
 
 const Item = ({item, navigation}) => (
-  <TouchableWithoutFeedback onPress={() => navigation.navigate('Nạp tiền điện thoại')}>
+  <TouchableWithoutFeedback
+    onPress={() => navigation.navigate('Nạp tiền điện thoại')}>
     <View style={[styles.item, styles.shadowProp]}>
       <Image style={styles.menuIcon} source={item.img} />
       <View style={styles.contentContainer}>
@@ -92,16 +92,16 @@ const Item = ({item, navigation}) => (
   </TouchableWithoutFeedback>
 );
 
-
 function MenuScreen({props, navigation}) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const renderItem = ({item}) => <Item item={item}  navigation={navigation} />;
+  const renderItem = ({item}) => <Item item={item} navigation={navigation} />;
 
   return (
     <View style={styles.container}>
       <View style={styles.segmentContainer}>
         <SegmentedControl
+          backgroundColor="rgba(0, 0, 0, 0.8)"
           fontStyle={{color: 'rgba(255, 255, 255, 1)', fontSize: 14}}
           activeFontStyle={{color: 'rgba(0, 0, 0, 1)', fontSize: 14}}
           style={styles.segment}
@@ -120,14 +120,12 @@ function MenuScreen({props, navigation}) {
         renderItem={renderItem}
         keyExtractor={item => item.id}
         navigation={navigation}
-
       />
     </View>
   );
 }
 
 function App() {
-
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -140,24 +138,24 @@ function App() {
             color: '#fff',
           },
           headerTintColor: '#fff',
-
-          
         }}>
         <Stack.Screen name="Ngân hàng số - vBank" component={MenuScreen} />
         <Stack.Screen
           name="Nạp tiền điện thoại"
           component={NapTienDienThoaiScreen}
-          options={({ navigation }) => ({
+          options={({navigation}) => ({
             headerRight: () => (
-              <TouchableWithoutFeedback onPress={() => navigation.navigate("Lịch sử giao dịch") }>
-              <Image source={require('../assets/Group1136.png')} resizeMode='contain' style ={{width: 25, height: 20}}></Image>
-            </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onPress={() => navigation.navigate('Lịch sử giao dịch')}>
+                <Image
+                  source={require('../assets/Group1136.png')}
+                  resizeMode="contain"
+                  style={{width: 25, height: 20}}></Image>
+              </TouchableWithoutFeedback>
             ),
-          })
-         
-          }
+          })}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Xác nhận giao dịch"
           component={XacNhanGiaoDichScreen}
         />
@@ -165,22 +163,19 @@ function App() {
           name="Lịch sử giao dịch"
           component={LichSuGiaoDichScreen}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Chi tiết giao dịch"
           component={ChiTietGiaoDichSreen}
         />
-         <Stack.Screen
-          name="Thanh toán"
-          component={ThanhToanScreen}
-        />
+        <Stack.Screen name="Thanh toán" component={ThanhToanScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const goToXacNhanGiaoDich = ()=> {
-  navigation.navigate("Xác nhận giao dịch")
-}
+const goToXacNhanGiaoDich = () => {
+  navigation.navigate('Xác nhận giao dịch');
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -194,7 +189,7 @@ const styles = StyleSheet.create({
     borderRadius: 25.64,
     flexDirection: 'row',
     margin: 8,
-    height: 102.4
+    height: 102.4,
   },
   shadowProp: {
     shadowColor: '#171717',
